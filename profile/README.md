@@ -1,33 +1,40 @@
 # SimpleFunctions
 
-Context flow for prediction markets — from perception to judgment to execution.
+Prediction-market infrastructure for agents, researchers, and operators.
 
-Real-time probabilities from 9,706 prediction markets (Kalshi + Polymarket). 38 MCP tools, 43 CLI commands, REST API. Thesis management, edge detection, what-if scenarios, automated trading strategies, and 24/7 monitoring.
+SimpleFunctions starts at `sf`: a local CLI for querying live Kalshi + Polymarket state, exporting structured JSON for coding agents, and gating prediction-market workflows from the shell. The HTTP/Data API is the network surface. SDKs and agent runtimes should wrap the same contracts. MCP is a compatibility adapter for MCP-only hosts.
 
-### Get started
+## Start here
 
 ```bash
-# CLI — 43 commands, no auth needed to explore
-npm i -g @spfunctions/cli && sf agent
-
-# MCP — one command for Claude Code / Cursor
-claude mcp add simplefunctions --url https://simplefunctions.dev/api/mcp/mcp
-
-# REST — instant data, no auth
-curl https://simplefunctions.dev/api/agent/world
+npm i -g @spfunctions/cli
+sf status --json
+sf world --json
+sf describe --all --json
 ```
 
-### Repositories
+- CLI: https://simplefunctions.dev/cli
+- Docs: https://docs.simplefunctions.dev
+- llms.txt: https://simplefunctions.dev/llms.txt
+- Public package catalog: https://simplefunctions.dev/opensource
 
-| Repo | What it is |
-|------|-----------|
-| [simplefunctions-cli](https://github.com/spfunctions/simplefunctions-cli) | CLI + MCP server. 43 commands, interactive agent, Telegram bot. |
-| [awesome-prediction-markets](https://github.com/spfunctions/awesome-prediction-markets) | Curated list of prediction market APIs, tools, datasets for developers. |
-| [causal-tree-decomposition](https://github.com/spfunctions/causal-tree-decomposition) | Standalone probability engine. Thesis → weighted confidence. |
-| [prediction-market-mcp-example](https://github.com/spfunctions/prediction-market-mcp-example) | Minimal MCP server (~50 lines) for learning. |
-| [prediction-market-context](https://github.com/spfunctions/prediction-market-context) | Fetch structured market context for any LLM. |
-| [kalshi-price-monitor](https://github.com/spfunctions/kalshi-price-monitor) | Terminal price alert monitor. |
+## Repositories by job
 
-### Links
+| Job | Repositories |
+| --- | --- |
+| Primary product surface | [`simplefunctions-cli`](https://github.com/spfunctions/simplefunctions-cli) |
+| API clients | [`simplefunctions-python`](https://github.com/spfunctions/simplefunctions-python) |
+| Institutional examples | [`sf-institutional-alpha-demo`](https://github.com/spfunctions/sf-institutional-alpha-demo) |
+| Benchmarks | [`major-model-benchmark`](https://github.com/spfunctions/major-model-benchmark), [`prediction-market-model-benchmark`](https://github.com/spfunctions/prediction-market-model-benchmark) |
+| Agent/framework adapters | [`langchain-prediction-markets`](https://github.com/spfunctions/langchain-prediction-markets), [`openai-agents-prediction-markets`](https://github.com/spfunctions/openai-agents-prediction-markets), [`vercel-ai-prediction-markets`](https://github.com/spfunctions/vercel-ai-prediction-markets), [`crewai-prediction-markets`](https://github.com/spfunctions/crewai-prediction-markets), [`prediction-market-mcp-example`](https://github.com/spfunctions/prediction-market-mcp-example) |
+| Utilities | [`agent-world-awareness`](https://github.com/spfunctions/agent-world-awareness), [`prediction-market-context`](https://github.com/spfunctions/prediction-market-context), [`prediction-market-edge-detector`](https://github.com/spfunctions/prediction-market-edge-detector), [`prediction-market-uncertainty`](https://github.com/spfunctions/prediction-market-uncertainty), [`prediction-market-regime`](https://github.com/spfunctions/prediction-market-regime), [`causal-tree-decomposition`](https://github.com/spfunctions/causal-tree-decomposition), [`polymarket-ticker-resolver`](https://github.com/spfunctions/polymarket-ticker-resolver), [`kalshi-orderbook-viewer`](https://github.com/spfunctions/kalshi-orderbook-viewer), [`kalshi-price-monitor`](https://github.com/spfunctions/kalshi-price-monitor), [`world-state-action`](https://github.com/spfunctions/world-state-action), [`create-prediction-market-agent`](https://github.com/spfunctions/create-prediction-market-agent) |
+| Research and demos | [`ttt-conv-memory`](https://github.com/spfunctions/ttt-conv-memory), [`Memento`](https://github.com/spfunctions/Memento), [`claude-arena`](https://github.com/spfunctions/claude-arena), [`claude-trading`](https://github.com/spfunctions/claude-trading), [`harness`](https://github.com/spfunctions/harness), [`polymarket-sports-mm`](https://github.com/spfunctions/polymarket-sports-mm) |
+| Lists and reading | [`prediction-markets-reading`](https://github.com/spfunctions/prediction-markets-reading), [`Awesome-Prediction-Market-Tools`](https://github.com/spfunctions/Awesome-Prediction-Market-Tools), [`awesome-prediction-markets`](https://github.com/spfunctions/awesome-prediction-markets), [`awesome-cli-agentic-tools`](https://github.com/spfunctions/awesome-cli-agentic-tools) |
 
-[Website](https://simplefunctions.dev) · [Docs](https://simplefunctions.dev/docs) · [Agent Guide](https://simplefunctions.dev/docs/guide) · [Blog](https://simplefunctions.dev/blog) · [X/Twitter](https://x.com/patrickfyzjwsdj)
+## Surface order
+
+1. CLI first: humans, scripts, Claude Code, Codex, cron, local workflows.
+2. HTTP/Data API second: services, notebooks, dashboards, remote workers.
+3. Clients/adapters: wrappers over the same objects.
+4. MCP last: compatibility layer for MCP-only hosts.
+
